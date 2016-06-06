@@ -10,17 +10,18 @@ function UserInfo() {
         location : "",
         industry : ""
     };
+    this.headline = "";
 
     this.profileUrl = "";
     this.profileImg = "images/profile-default-man.png";
     this.coverImg = "images/cover-default.png";
+    this.summary = "";
     this.caredCauses = [];
     this.education = [];
     this.experience = [];
-    this.followers = 0;
-    this.headline = "";
-    this.isInfluencer = true;
     this.skills = [];
-    this.summary = "";
+    this.followers = 0;
+    this.isInfluencer = true;
+
     this.supportedOrganizations = [];
 };

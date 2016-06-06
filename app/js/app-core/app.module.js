@@ -30,11 +30,20 @@ app.config(['$locationProvider', '$routeProvider',
 app.run(['$rootScope', '$location', 'authService', function ($rootScope, $location, authService) {
     authService.onAuthStateChanged(function (user) {
         if (user)
-            $location.path('/profile');
+            $location.path('/profile').replace();
         else
-            $location.path('/sign-in');
+            $location.path('/sign-in').replace();
 
         $rootScope.$apply();
+    });
+
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        if (authService.getCurrentUser()) {
+            if ($location.path() == '/sign-in' || $location.path() == '/landing')
+                event.preventDefault();
+        }
+        else if ($location.path().includes('/profile'))
+            event.preventDefault();
     });
 }]);
 

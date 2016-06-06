@@ -11,9 +11,7 @@ appControllers.controller('profileController', ['$scope', '$location', '$routePa
         listenerRef = dataService.bind('users/' + userId, function (snapshot) {
             if (snapshot.exists()) {
 
-                var data = snapshot.val();
-                $scope.name = data.name;
-                $scope.industry = data.industry;
+                $scope.user = snapshot.val();
                 $scope.$apply();
             }
             else if (hasParam) {
